@@ -1,4 +1,3 @@
-//Импорт
 import './pages/index.css';
 
 import { initialCards } from './components/cards.js';
@@ -7,7 +6,6 @@ import { closeModal, openModal, handleModalClick } from './components/modal.js';
 
 import { likeCard, deleteCard, createCard } from './components/card.js';
 
-//Глобальные переменные
 const popupImage = document.querySelector('.popup_type_image');
 const popupImageCaption = popupImage.querySelector('.popup__caption');
 const popupImageImage = popupImage.querySelector('.popup__image');
@@ -32,7 +30,6 @@ const profileDescriptionInput = profileForm.elements.description;
 const popupProfile = document.querySelector('.popup_type_edit');
 const popupProfileButtonOpen = document.querySelector('.profile__edit-button');
 
-// Функции
 const handleCardImageClick = (cardName, cardLink) => {
   popupImageImage.src = cardLink;
   popupImageImage.alt = cardName;

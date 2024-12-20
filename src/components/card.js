@@ -1,4 +1,3 @@
-//Функция создания карточки с картинками
 const createCard = (template, data, onDelete, onLike, onImageClick) => {
     const element = template.querySelector('.card').cloneNode(true);
 
@@ -21,12 +20,10 @@ const createCard = (template, data, onDelete, onLike, onImageClick) => {
 
 };
 
-// Функция удаления карточки
 const deleteCard = (event) => {
     event.target.closest('.card').remove();
 };
 
-//Функция лайка карточки
 const likeCard = (event) => {
     event.currentTarget.classList.toggle('card__like-button_is-active');
 };
