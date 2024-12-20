@@ -30,3 +30,5 @@ const initialCards = [
       alt: "Горный пейзаж около озера Байкал"
     }
 ];
+
+export { initialCards };
