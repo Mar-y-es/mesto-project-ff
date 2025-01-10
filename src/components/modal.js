@@ -8,7 +8,6 @@ const handleDocumentKeydown = (event) => {
     if (event.target.classList.contains('popup_is-opened')) {
       return closeModal(event.target);
     }
-  
     if (event.target.closest('.popup__close')) {
       return closeModal(event.target.closest('.popup'));
     }

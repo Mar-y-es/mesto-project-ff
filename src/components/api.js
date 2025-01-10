@@ -1,4 +1,4 @@
-const config = {
+const CONFIG = {
     baseUrl: 'https://nomoreparties.co/v1/wff-cohort-29',
     headers: {
         authorization: '87b41c2a-cd78-48a1-9843-081cf077e7f5',
@@ -32,7 +32,7 @@ const handleResponse = (response) => {
   };
   
   const getInitialCards = () => {
-    return fetch(`${config.baseUrl}/cards`, { headers: config.headers })
+    return fetch(`${CONFIG.baseUrl}/cards`, { headers: CONFIG.headers })
     .then(handleResponse);
   };
   
@@ -50,37 +50,37 @@ const handleResponse = (response) => {
   };
   
   const deleteCard = (cardId) => {
-    return fetch(`${config.baseUrl}/cards/${cardId}`, {
-      headers: config.headers,
+    return fetch(`${CONFIG.baseUrl}/cards/${cardId}`, {
+      headers: CONFIG.headers,
       method: 'DELETE',
     })
     .then(handleResponse);
   };
   
   const likeCard = (cardId) => {
-    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-      headers: config.headers,
+    return fetch(`${CONFIG.baseUrl}/cards/likes/${cardId}`, {
+      headers: CONFIG.headers,
       method: 'PUT',
     })
     .then(handleResponse);
   };
   
   const unLikeCard = (cardId) => {
-    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
-      headers: config.headers,
+    return fetch(`${CONFIG.baseUrl}/cards/likes/${cardId}`, {
+      headers: CONFIG.headers,
       method: 'DELETE',
     })
     .then(handleResponse);
   };
   
   const getUserInfo = () => {
-    return fetch(`${config.baseUrl}/users/me`, { headers: config.headers })
+    return fetch(`${CONFIG.baseUrl}/users/me`, { headers: CONFIG.headers })
     .then(handleResponse);
   };
   
   const updateUserInfo = ({ name, description }) => {
-    return fetch(`${config.baseUrl}/users/me`, {
-      headers: config.headers,
+    return fetch(`${CONFIG.baseUrl}/users/me`, {
+      headers: CONFIG.headers,
       method: 'PATCH',
       body: JSON.stringify({
         name,

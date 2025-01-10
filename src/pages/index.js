@@ -1,5 +1,7 @@
 import './index.css';
 
+import { initialCards } from '../components/cards.js';
+
 import { closeModal, openModal, handleModalClick } from '../components/modal.js';
 
 import { createCard as DOMCreateCard } from '../components/card.js';
@@ -282,6 +284,20 @@ popupCardButtonOpen.addEventListener('click', handlePopupCardButtonOpenClick);
 popupProfile.addEventListener('click', handleModalClick);
 
 popupProfileButtonOpen.addEventListener('click',handlePopupProfileButtonOpenClick);
+
+
+initialCards.forEach((cardData) => {
+  cardsContainer.append(
+    createCard(
+      cardTemplate,
+      cardData,
+      deleteCard,
+      likeCard,
+      handleCardImageClick
+    )
+  );
+});
+
 
 popupConfirm.addEventListener('click', handleModalClick);
 
