@@ -1,7 +1,7 @@
 const CONFIG = {
-  baseUrl: 'https://nomoreparties.co/v1/wff-cohort-3',
+  baseUrl: 'https://nomoreparties.co/v1/wff-cohort-29',
   headers: {
-    authorization: '6fe6d9ae-5e51-48dc-9564-eb9b80b948d9',
+    authorization: '87b41c2a-cd78-48a1-9843-081cf077e7f5',
     'Content-Type': 'application/json',
   },
 };
