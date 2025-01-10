@@ -283,21 +283,7 @@ popupCardButtonOpen.addEventListener('click', handlePopupCardButtonOpenClick);
 
 popupProfile.addEventListener('click', handleModalClick);
 
-popupProfileButtonOpen.addEventListener('click',handlePopupProfileButtonOpenClick);
-
-
-initialCards.forEach((cardData) => {
-  cardsContainer.append(
-    createCard(
-      cardTemplate,
-      cardData,
-      deleteCard,
-      likeCard,
-      handleCardImageClick
-    )
-  );
-});
-
+popupProfileButtonOpen.addEventListener('click', handlePopupProfileButtonOpenClick);
 
 popupConfirm.addEventListener('click', handleModalClick);
 
