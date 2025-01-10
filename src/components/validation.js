@@ -1,33 +1,38 @@
 const hasInvalidInput = (inputList) =>
   inputList.some((input) => !input.validity.valid);
 
-const showInputError = ({
+const showInputError = (
   formElement,
   inputElement,
   inputErrorClass,
   errorClass,
   errorMessage,
-}) => {
+) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
-  errorElement.classList.add(errorClass);
-  errorElement.textContent = errorMessage;
-
   inputElement.classList.add(inputErrorClass);
+
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(errorClass);
+  
 };
 
-const hideInputError = ({
+const hideInputError = (
   formElement,
   inputElement,
   inputErrorClass,
   errorClass,
-}) => {
+) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+
+  console.log({ errorElement });
+
+
+  inputElement.classList.remove(inputErrorClass);
 
   errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
-
-  inputElement.classList.remove(inputErrorClass);
+  
 };
 
 const checkInputValidity = ({
@@ -148,12 +153,12 @@ const clearValidation = (
   const submitButtonElement = formElement.querySelector(submitButtonSelector);
 
   inputList.forEach((inputElement) => {
-    hideInputError({
+    hideInputError(
       formElement,
       inputElement,
       inputErrorClass,
       errorClass,
-    });
+    );
   });
 
   toggleButtonState({
