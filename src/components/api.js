@@ -37,19 +37,16 @@ const handleResponse = (response) => {
   };
   
   const createCard = ({ name, link }) => {
-    return checkImageUrl(link)
-      .then(() =>
-        fetch(`${config.baseUrl}/cards`, {
-          headers: config.headers,
-          method: 'POST',
-          body: JSON.stringify({
-            name,
-            link,
-          }),
-        })
-        .then(handleResponse)
-      )
-      .catch((error) => Promise.reject(error));
+    return checkImageUrl(link).then(() =>
+      fetch(`${CONFIG.baseUrl}/cards`, {
+        headers: CONFIG.headers,
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          link,
+        }),
+      }).then(handleResponse)
+    );
   };
   
   const deleteCard = (cardId) => {
@@ -94,18 +91,15 @@ const handleResponse = (response) => {
   };
   
   const updateUserAvatar = (url) => {
-    return checkImageUrl(url)
-      .then(() =>
-        fetch(`${config.baseUrl}/users/me/avatar`, {
-          headers: config.headers,
-          method: 'PATCH',
-          body: JSON.stringify({
-            avatar: url,
-          }),
-        })
-        .then(handleResponse)
-      )
-      .catch((error) => Promise.reject(error));
+    return checkImageUrl(url).then(() =>
+      fetch(`${CONFIG.baseUrl}/users/me/avatar`, {
+        headers: CONFIG.headers,
+        method: 'PATCH',
+        body: JSON.stringify({
+          avatar: url,
+        }),
+      }).then(handleResponse)
+    );
   };
   
   export {
