@@ -13,9 +13,9 @@ import {
   unLikeCard as APIUnLikeCard,
   createCard as APICreateCard,
   deleteCard as APIDeleteCard,
-} from '..components/api.js';
+} from '../components/api.js';
 
-import { clearValidation, enableValidashion } from '..components/validation.ls'
+import { clearValidation, enableValidation } from '../components/validation.js'
 
 const validationConfig = {
   formSelector: '.popup__form',
@@ -288,7 +288,7 @@ popupProfileButtonOpen.addEventListener('click',handlePopupProfileButtonOpenClic
 
 popupConfirm.addEventListener('click', handleModalClick);
 
-enableValidashion(validationConfig);
+enableValidation(validationConfig);
 
 Promise.all([APIGetUserInfo(), APIGetetInitialCards()])
   .then(([{ name, about, ['_id']: currentUserId}, cardsData]) => {
