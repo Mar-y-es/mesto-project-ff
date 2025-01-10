@@ -1,7 +1,5 @@
 import './index.css';
 
-import { initialCards } from '../components/cards.js';
-
 import { closeModal, openModal, handleModalClick } from '../components/modal.js';
 
 import { createCard as DOMCreateCard } from '../components/card.js';
@@ -17,7 +15,7 @@ import {
   deleteCard as APIDeleteCard,
 } from '../components/api.js';
 
-import { clearValidation, enableValidation } from '../components/validation.js'
+import { enableValidation, clearValidation } from '../components/validation.js'
 
 const validationConfig = {
   formSelector: '.popup__form',
