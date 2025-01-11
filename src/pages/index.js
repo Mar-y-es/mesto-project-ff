@@ -21,7 +21,15 @@ import {
 
 import { clearValidation, enableValidation } from '../components/validation.js';
 
-import { validationConfig } from '../components/validation.js';
+/*import { validationConfig } from '../components/validation.js';*/
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
 
 const popupImage = document.querySelector('.popup_type_image');
 const popupImageCaption = popupImage.querySelector('.popup__caption');
