@@ -22,8 +22,6 @@ import {
 
 import { clearValidation, enableValidation } from '../components/validation.js';
 
-/*import { validationConfig } from '../components/validation.js';*/
-
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -85,41 +83,6 @@ const toggleSubmitButtonState = ({ buttonElement, isSubmitting }) => {
     buttonElement.textContent = 'Сохранить';
   }
 };
-
-/*const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
-  buttonElement.disabled = true;
-
-  if (buttonElement.classList.contains('card__like-button_is-active')) {
-    apiUnLikeCard(cardId)
-      .then(({ likes }) => {
-        buttonElement.classList.remove('card__like-button_is-active');
-
-        if (likes.length) {
-          counterElement.classList.add('card__like-counter_is-active');
-          counterElement.textContent = likes.length;
-        } else {
-          counterElement.classList.remove('card__like-counter_is-active');
-          counterElement.textContent = '';
-        }
-      })
-      .catch((error) => console.error(error))
-      .finally(() => {
-        buttonElement.disabled = false;
-      });
-  } else {
-     apiLikeCard(cardId)
-      .then(({ likes }) => {
-        buttonElement.classList.add('card__like-button_is-active');
-
-        counterElement.classList.add('card__like-counter_is-active');
-        counterElement.textContent = likes.length;
-      })
-      .catch((error) => console.error(error))
-      .finally(() => {
-        buttonElement.disabled = false;
-      });
-  }
-};*/
 
 const handleCardDelete = ({ cardId, buttonElement }) => {
   openModal(popupConfirm);

@@ -1,4 +1,4 @@
-import { likeCard, unLikeCard} from './api.js';
+import { likeCard, unLikeCard } from './api.js';
 
 const cardLike = ({ cardId, buttonElement, counterElement }) => {
   buttonElement.disabled = true;
