@@ -1,3 +1,40 @@
+import { likeCard, unLikeCard} from './api.js';
+
+const cardLike = ({ cardId, buttonElement, counterElement }) => {
+  buttonElement.disabled = true;
+
+  if (buttonElement.classList.contains('card__like-button_is-active')) {
+    unLikeCard(cardId)
+      .then(({ likes }) => {
+        buttonElement.classList.remove('card__like-button_is-active');
+
+        if (likes.length) {
+          counterElement.classList.add('card__like-counter_is-active');
+          counterElement.textContent = likes.length;
+        } else {
+          counterElement.classList.remove('card__like-counter_is-active');
+          counterElement.textContent = '';
+        }
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        buttonElement.disabled = false;
+      });
+  } else {
+     likeCard(cardId)
+      .then(({ likes }) => {
+        buttonElement.classList.add('card__like-button_is-active');
+
+        counterElement.classList.add('card__like-counter_is-active');
+        counterElement.textContent = likes.length;
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        buttonElement.disabled = false;
+      });
+  }
+};
+
 const createCard = ({
   currentUserId,
   template,
@@ -57,4 +94,4 @@ const createCard = ({
   return element;
 };
 
-export { createCard };
+export { createCard, cardLike };

@@ -6,15 +6,16 @@ import {
   handleModalClick,
 } from '../components/modal.js';
 
-import { createCard as DOMCreateCard } from '../components/card.js';
+import {
+  createCard as DOMCreateCard,
+  cardLike as handleCardLike
+} from '../components/card.js';
 
 import {
   getInitialCards as apiGetInitialCards,
   getUserInfo as apiGetUserInfo,
   updateUserAvatar as apiUpdateUserAvatar,
   updateUserInfo as apiUpdateUserInfo,
-  likeCard as apiLikeCard,
-  unLikeCard as apiUnLikeCard,
   createCard as apiCreateCard,
   deleteCard as apiDeleteCard,
 } from '../components/api.js';
@@ -85,7 +86,7 @@ const toggleSubmitButtonState = ({ buttonElement, isSubmitting }) => {
   }
 };
 
-const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
+/*const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
   buttonElement.disabled = true;
 
   if (buttonElement.classList.contains('card__like-button_is-active')) {
@@ -106,7 +107,7 @@ const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
         buttonElement.disabled = false;
       });
   } else {
-    apiLikeCard(cardId)
+     apiLikeCard(cardId)
       .then(({ likes }) => {
         buttonElement.classList.add('card__like-button_is-active');
 
@@ -118,7 +119,7 @@ const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
         buttonElement.disabled = false;
       });
   }
-};
+};*/
 
 const handleCardDelete = ({ cardId, buttonElement }) => {
   openModal(popupConfirm);
