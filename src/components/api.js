@@ -37,16 +37,18 @@ const getInitialCards = () => {
 };
 
 const createCard = ({ name, link }) => {
-  return checkImageUrl(link).then(() =>
-    fetch(`${CONFIG.baseUrl}/cards`, {
-      headers: CONFIG.headers,
-      method: 'POST',
-      body: JSON.stringify({
-        name,
-        link,
-      }),
-    }).then(handleResponse)
-  );
+  return checkImageUrl(link)
+    .then(() =>
+      fetch(`${CONFIG.baseUrl}/cards`, {
+        headers: CONFIG.headers,
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          link,
+        }),
+      }).then(handleResponse)
+    )
+    .catch((error) => Promise.reject(error));
 };
 
 const deleteCard = (cardId) => {
