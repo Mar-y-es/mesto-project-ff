@@ -9,19 +9,20 @@ import {
 import { createCard as DOMCreateCard } from '../components/card.js';
 
 import {
-  getInitialCards as APIGetInitialCards,
-  getUserInfo as APIGetUserInfo,
-  updateUserAvatar as APIUpdateUserAvatar,
-  updateUserInfo as APIUpdateUserInfo,
-  likeCard as APILikeCard,
-  unLikeCard as APIUnLikeCard,
-  createCard as APICreateCard,
-  deleteCard as APIDeleteCard,
+  getInitialCards as apiGetInitialCards,
+  getUserInfo as apiGetUserInfo,
+  updateUserAvatar as apiUpdateUserAvatar,
+  updateUserInfo as apiUpdateUserInfo,
+  likeCard as apiLikeCard,
+  unLikeCard as apiUnLikeCard,
+  createCard as apiCreateCard,
+  deleteCard as apiDeleteCard,
 } from '../components/api.js';
 
 import { clearValidation, enableValidation } from '../components/validation.js';
 
 /*import { validationConfig } from '../components/validation.js';*/
+
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -88,7 +89,7 @@ const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
   buttonElement.disabled = true;
 
   if (buttonElement.classList.contains('card__like-button_is-active')) {
-    APIUnLikeCard(cardId)
+    apiUnLikeCard(cardId)
       .then(({ likes }) => {
         buttonElement.classList.remove('card__like-button_is-active');
 
@@ -105,7 +106,7 @@ const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
         buttonElement.disabled = false;
       });
   } else {
-    APILikeCard(cardId)
+    apiLikeCard(cardId)
       .then(({ likes }) => {
         buttonElement.classList.add('card__like-button_is-active');
 
@@ -124,16 +125,15 @@ const handleCardDelete = ({ cardId, buttonElement }) => {
   popupConfirmButton.onclick = () => {
     buttonElement.disabled = true;
 
-    APIDeleteCard(cardId)
+    apiDeleteCard(cardId)
       .then(() => {
         buttonElement.closest('.card').remove();
+
+        closeModal(popupConfirm);
       })
       .catch((error) => {
         buttonElement.disabled = false;
         console.error(error);
-      })
-      .finally(() => {
-        closeModal(popupConfirm);
       });
   };
 };
@@ -146,7 +146,7 @@ const handleCardFormSubmit = (event) => {
     isSubmitting: true,
   });
 
-  APICreateCard({
+  apiCreateCard({
     name: cardNameInput.value,
     link: cardLinkInput.value,
   })
@@ -185,7 +185,7 @@ const handleProfileFormSubmit = (event) => {
     isSubmitting: true,
   });
 
-  APIUpdateUserInfo({
+  apiUpdateUserInfo({
     name: profileNameInput.value,
     description: profileDescriptionInput.value,
   })
@@ -217,7 +217,7 @@ const handleProfileImageFormSubmit = (event) => {
     isSubmitting: true,
   });
 
-  APIUpdateUserAvatar(profileImageInput.value)
+  apiUpdateUserAvatar(profileImageInput.value)
     .then(({ name, about, avatar }) => {
       setProfile({
         name,
@@ -296,7 +296,7 @@ popupConfirm.addEventListener('click', handleModalClick);
 
 enableValidation(validationConfig);
 
-Promise.all([APIGetUserInfo(), APIGetInitialCards()])
+Promise.all([apiGetUserInfo(), apiGetInitialCards()])
   .then(([{ name, about, avatar, ['_id']: currentUserId }, cardsData]) => {
     setProfile({
       name,
