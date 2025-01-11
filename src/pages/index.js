@@ -113,7 +113,6 @@ const handleCardLike = ({ cardId, buttonElement, counterElement }) => {
 
 const handleCardDelete = ({ cardId, buttonElement }) => {
   openModal(popupConfirm);
-  // так как по сути кнопка "Да" все равно выполняет только ровно одну операцию как confirm()
   popupConfirmButton.onclick = () => {
     buttonElement.disabled = true;
 
