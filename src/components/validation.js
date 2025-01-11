@@ -149,7 +149,7 @@ const clearValidation = (
     errorClass,
   }
 ) => {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const inputList = [...formElement.querySelectorAll(inputSelector)];
   const submitButtonElement = formElement.querySelector(submitButtonSelector);
 
   inputList.forEach((inputElement) => {
